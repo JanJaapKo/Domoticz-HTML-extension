@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zonmanshoeve 10 beneden</title> 
+<!--lightweight dashboard for zonmanshoeve 10. To be placed in pi/domoticz/www-->
+<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<style>
+div#title {
+	width: 990px;
+    margin: 0 auto;
+    text-align: left;
+}
+div#cnt {
+	width: 990px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+a, a:visited { text-decoration: none; color: #336699; }
+a:hover { text-decoration: none; color: #003366; }
+
+#frame {
+	float: left;
+	margin: 0px;
+	padding: 0px 2px 0px 2px;
+}
+
+#desc_cell1, #desc_cell2, #desc_cell3, #desc_cell4,
+#desc_cell5, #desc_cell6, #desc_cell7, #desc_cell8, #desc_cell9,
+#desc_cell10, #desc_cell11, #desc_cell12, #desc_cell13, #desc_cell14,
+#desc_cell15, #desc_cell16, #desc_cell17, #desc_cell18, #desc_cell19,
+#desc_cell20, #desc_cell21, #desc_cell22, #desc_cell23, #desc_cell24
+ {
+	font-family: Arimo;
+	font-weight: normal;
+	color: #ABACB0; //kleur van item beschrijving
+	font-size: 17px;
+	margin-top: -20px;
+	height: 25px;
+	line-height: 10px;
+}
+
+#cell1, #cell2, #cell3, #cell4, #cell5, 
+#cell6, #cell7, #cell8, #cell9, #cell10, 
+#cell11, #cell12, #cell13, #cell14, #cell15, 
+#cell16, #cell17, #cell18, #cell19, #cell20
+     {
+	font-family: Arimo, serif;
+	font-weight: bold;
+	width: 162px;
+	height: 90px;
+	padding: 10px;
+	border: 1px solid #666;
+    border-radius: 10px;
+	line-height: 75px; 		
+	font-size: 40px;
+	color: white; //Kleur waardes van cellen
+}
+#cell3 {
+	width: 570px;
+	padding: 5px;
+	height: 217px;	
+	line-height: 210px; 
+	font-size: 180px;	
+	color: #2980B9;
+	margin: 0px ;
+}
+
+#cell6,  #cell7, #cell8, #cell9, #cell10,  
+#cell11, #cell12, #cell13, #cell14, #cell15,
+#cell16, #cell17, #cell18, #cell19, #cell20, 
+#cell21, #cell22, #cell23 {
+	height: 65px;
+	line-height: 55px;
+}
+#cell8, #cell13 { 
+	width: 184px; 
+}
+#cell18 { 
+	height: 75px;
+	width: 570px; 
+	padding: 5px;
+}
+#all { 
+	margin-left: -35px; 
+	margin-top: 5px; 
+	width: 1050px;height: 570px;	
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  	font-family: Arimo, serif;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+</style>
+</head>
+<body bgcolor="#000">
+<div id="cnt">
+<div id="title">
+<div class="dropdown">
+  <button onclick="handleDropdown()" class="dropbtn">Details</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="http://192.168.1.16:8080/frontpage.html">Front</a>
+    <a href="http://192.168.1.16:8080/boven_page.html">Boven</a>
+    <!--<a href="#">Link 3</a> -->
+  </div>
+</div>
+</div>
+<div>
+<div id="frame">
+	<div id="cell1">--</div><div id="desc_cell1">cell1</div>
+	<div id="cell2">--</div><div id="desc_cell2">cell2</div>
+</div>
+<div id="frame">
+	<div id="cell3">--</div><div id="desc_cell3">cell3</div>
+</div>
+<div id="frame">
+	<div id="cell4">--</div><div id="desc_cell4">cell4</div>
+	<div id="cell5">--</div><div id="desc_cell5">cell5</div>
+</div>
+</div>
+
+<div>
+<div id="frame">
+	<div id="cell6">--</div><div id="desc_cell6">cell6</div>
+</div>
+<div id="frame">
+	<div id="cell7">--</div><div id="desc_cell7">cell7</div>
+</div>
+<div id="frame">
+	<div id="cell8">--</div><div id="desc_cell8">cell8</div>
+</div>
+<div id="frame">
+	<div id="cell9">--</div><div id="desc_cell9">cell9</div>
+</div>
+<div id="frame">
+	<div id="cell10">--</div><div id="desc_cell10">cell10</div>
+</div>
+</div> 
+
+<!-- row 4 commented out since no use for now -->
+<div>
+<div id="frame">
+	<div id="cell11">--</div><div id="desc_cell11">cell11</div>
+</div>
+<div id="frame">
+	<div id="cell12">--</div><div id="desc_cell12">cell12</div>
+</div>
+<div id="frame">
+	<div id="cell13">--</div><div id="desc_cell13">cell13</div>
+</div>
+<div id="frame">
+	<div id="cell14">--</div><div id="desc_cell14">cell14</div>
+</div>
+<div id="frame">
+	<div id="cell15">--</div><div id="desc_cell15">cell15</div>
+</div>
+</div>
+<!-- row 4 commented out since no use for now -->
+<div>
+<div id="frame">
+	<div id="cell16">--</div><div id="desc_cell16">cell16</div>
+</div>
+<!-- <div id="frame">
+	<div id="cell17">--</div><div id="desc_cell17">cell17</div>
+</div> -->
+<div id="frame">
+	<div id="cell18">--</div><div id="desc_cell18">cell18</div>
+</div>
+<!--<div id="frame">
+	<div id="cell19">--</div><div id="desc_cell19">cell19</div>
+</div>-->
+<div id="frame">
+	<div id="cell20">--</div><div id="desc_cell20">cell20</div>
+</div>
+</div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+function RefreshData()
+{
+	clearInterval($.refreshTimer);
+	//var jurl=$.domoticzurl+"/json.htm?type=devices&plan="+$.roomplan+"&jsoncallback=?";
+	var jurl=$.domoticzurl+"/json.htm?type=devices&jsoncallback=?";
+	$.getJSON(jurl,
+	{
+		format: "json"
+	},
+	function(data) {
+		if (typeof data.result != 'undefined') {
+			
+			$.each(data.result, function(i,item){
+				for( var ii = 0, len = $.PageArray.length; ii < len; ii++ ) {
+					if( $.PageArray[ii][0] === item.idx ) {		// Domoticz idx number
+						var vtype=	$.PageArray[ii][1]; 		// Domotitcz type (like Temp, Humidity)
+						var vlabel=	$.PageArray[ii][2];			// cell number from HTML layout
+						var vdesc=	$.PageArray[ii][3];			// description 
+                        var vunit=  $.PageArray[ii][4]; 		// unit to display
+						var vattr=	$.PageArray[ii][5];			// extra css attributes
+						var valarm=	$.PageArray[ii][6]; 		// alarm value to turn text to red
+						var vdata=	item[vtype];				// current value
+						if (typeof vdata == 'undefined') {
+							vdata="??";
+						} else {
+							// remove too much text
+							vdata=new String(vdata).split("Watt",1)[0];
+							vdata=new String(vdata).split("kWh",1)[0];
+							vdata=new String(vdata).split("m3",1)[0];
+							vdata=new String(vdata).split(" Level:",1)[0];
+							vdata=new String(vdata).replace("Set","On");
+							
+							//If IDX matches '1' (RAM usage) or '5' (CPU usage), then strip off the '%' and round the numbers
+							//if(item.idx == '1' || item.idx == '5'){
+							//vdata=new String(vdata).split("%",1)[0];
+							//vdata=Math.round(vdata);
+							//}	
+						
+						}
+						
+						// create switchable value when item is switch
+						switchclick='';
+						if (vdata == 'Off' ) {
+							switchclick = 'onclick="SwitchToggle('+item.idx+', \'On\');"';
+						}
+						if (vdata == 'On' ) {
+							switchclick = 'onclick="SwitchToggle('+item.idx+', \'Off\');"';
+						}
+						
+						
+						// if alarm threshold is defined, make value red 
+						//alarmcss='';
+						//if (typeof valarm != 'undefined') {
+						//	if ( eval(vdata + valarm)) {  // note orig:  vdata > alarm
+						//		alarmcss=';color:red;';
+						//	}
+						//}
+
+						// if switch is on, make green, if off, make red
+						alarmcss='';
+							if (vdata == 'On') {  // note orig:  vdata > alarm
+								alarmcss=';color:#1B9772;';
+								vdata = 'Aan';
+							}
+							
+							if (vdata == 'Off') {  // note orig:  vdata > alarm
+								alarmcss=';color:#E24E2A;';
+								vdata = 'Uit';
+							}
+
+
+						// if extra css attributes
+						if (typeof vattr == 'undefined') {
+							$('#'+vlabel).html('<div '+switchclick+' style='+alarmcss+'>'+vdata+'<span style=font-size:35%;line-height:2> '+vunit+'</span></div>');
+						} else {
+							$('#'+vlabel).html( '<div '+switchclick+' style='+vattr+alarmcss+'>'+vdata+'<span style=font-size:35%;line-height:2> '+vunit+'</span></div>');
+						}
+						
+						$('#desc_'+vlabel).html(vdesc);
+					}
+				}
+			});
+		}
+	});
+	$.refreshTimer = setInterval(RefreshData, 8000);
+}
+
+// ############################################################################################################
+// #### vvvvv   USER VALUES below vvvvv   #######
+// ############################################################################################################
+
+$(document).ready(function() {
+	$.roomplan=2;   	// define roomplan in Domoticz and create items below.
+	$.domoticzurl="http://192.168.1.16:8080";
+	//format: idx, value, label, description, unit, [override css], [alarm value]
+	$.PageArray = [
+		['71',	'Status',		'cell1',	'Verwarming' ,''],
+		['61',	'Status',		'cell2',	'Eco mode', ''],
+		['2',	'Temp',			'cell3',	'Woonkamer', '[&deg;C]'],
+		['2',	'Humidity',		'cell4',	'Woonkamer' ,'[%]',],	
+		['1',	'SetPoint',		'cell5',	'Ingestelde temp', '[&deg;C]',],
+
+		['4',	'Status',		'cell6',	'Buitenshuis', ''],
+		['28',	'Status',		'cell7',	'WTW Blokkeer', ''],
+		['45',	'Status',		'cell8',	'WTW stand 2', ''],
+		['34',	'Level',		'cell9',	'Dimmer eettafel', '[%]'],
+		['34',	'Status',		'cell10',	'Lamp eettafel', ''],
+
+		['28',	'',		'cell11',	'cell 11', ''],
+		['72',	'Status',		'cell12',	'WTW Req. Aan' ,''],
+		['46',	'Status',		'cell13',	'WTW stand 3', ''],
+		['80',	'Level',		'cell14',	'Dimmer buiten', '[%]'],
+		['80',	'Status',		'cell15',	'Lamp buiten' ,''],
+
+		['52',	'Humidity',		'cell16',	'Luchtv. buiten' ,'[%]'],
+		['85',	'Status',		'cell17',	'Schemer', ''],
+		['52',	'ForecastStr',	'cell18',	'Weer buiten', ''],
+		['64',	'Status',		'cell19',	'Eettafel', ''],	
+		['52',	'Temp',			'cell20',	'Buiten', '[&deg;C]'],
+	];
+
+// ############################################################################################################
+// #### ^^^^^   USER VALUES above ^^^^^   #######
+// ############################################################################################################
+
+
+    RefreshData();
+});  
+
+
+function SwitchToggle(idx, switchcmd)
+{
+	 console.log('function called');
+	 $.ajax({
+     url: "json.htm?type=command&param=switchlight" + "&idx=" + idx + "&switchcmd=" + switchcmd + "&level=0",
+     async: false, 
+     dataType: 'json',
+     success: function(){
+     	console.log('SUCCES');
+     },
+     error: function(){
+     	console.log('ERROR');
+     }
+ 	});
+ 	RefreshData();
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function handleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
