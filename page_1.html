@@ -11,6 +11,16 @@ div#title {
 	width: 990px;
     margin: 0 auto;
     text-align: left;
+    color: white;
+}
+div#titleBlock {
+
+	font-family: Arimo, serif;
+	font-weight: bold;
+	font-size: 40px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
 }
 div#cnt {
 	width: 990px;
@@ -143,10 +153,13 @@ a:hover { text-decoration: none; color: #003366; }
 <div class="dropdown">
   <button onclick="handleDropdown()" class="dropbtn">Details</button>
   <div id="myDropdown" class="dropdown-content">
-    <a href="http://192.168.1.16:8080/Domoticz-HTML-extension/frontpage.html">Overzicht</a>
-    <a href="http://192.168.1.16:8080/Domoticz-HTML-extension/page_2.html">Ander</a>
+    <a href="http://192.168.1.16:8080/frontpage.html">Overzicht</a>
+    <a href="http://192.168.1.16:8080/page_2.html">Ander</a>
     <!--<a href="#">Link 3</a> -->
   </div>
+</div>
+<div id="titleBlock">
+Lampen
 </div>
 </div>
 <div>
@@ -317,19 +330,19 @@ $(document).ready(function() {
 	$.domoticzurl="http://192.168.1.16:8080";
 	//format: idx, value, label, description, unit, [override css], [alarm value]
 	$.PageArray = [
-		['71',	'Status',		'cell1',	'Verwarming' ,''],
-		['61',	'Status',		'cell2',	'Eco mode', ''],
+		['80',	'Status',		'cell1',	'Buitenlamp' ,''],
+		['80',	'Level',		'cell2',	'Buitenlamp', '[%]'],
 		['2',	'Temp',			'cell3',	'Woonkamer', '[&deg;C]'],
 		['2',	'Humidity',		'cell4',	'Woonkamer' ,'[%]',],	
 		['1',	'SetPoint',		'cell5',	'Ingestelde temp', '[&deg;C]',],
 
-		['4',	'Status',		'cell6',	'Buitenshuis', ''],
+		['34',	'Status',		'cell6',	'Lamp Eettafel', ''],
 		['103',	'Status',		'cell7',	'Lamp Bar 1', ''],
 		['106',	'Status',		'cell8',	'Lamp Bar 2', ''],
 		['105',	'Status',		'cell9',	'Lamp Bar 3', ''],
 		['123',	'Status',		'cell10',	'Lamp Bamboe 1', ''],
 
-		['28',	'',		'cell11',	'cell 11', ''],
+		['34',	'Level',		'cell11',	'Lamp Eettafel', '[%]'],
 		['112',	'Status',		'cell12',	'Schemerlamp1' ,''],
 		['113',	'Status',		'cell13',	'Schemerlamp2', ''],
 		['80',	'Status',		'cell14',	'Schemerlamp3', ''],
