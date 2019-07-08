@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Zonmanshoeve 10 Boven</title> 
+<title>Zonmanshoeve 10 Klimaat</title> 
 <!--lightweight dashboard for zonmanshoeve 10. To be placed in pi/domoticz/www-->
 <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -313,21 +313,21 @@ function RefreshData()
 // ############################################################################################################
 
 $(document).ready(function() {
-	$.roomplan=3;   	// define roomplan in Domoticz and create items below.
+	$.roomplan=0;   	// define roomplan in Domoticz and create items below.
 	$.domoticzurl="http://192.168.1.16:8080";
 	//format: idx, value, label, description, unit, [override css], [alarm value]
 	$.PageArray = [
 		['50',	'Temp',			'cell2',	'Badkamer', '[&deg;C]'],
 		['50',	'Humidity',		'cell1',	'Badkamer', '[%]'],
 		['2',	'Temp',			'cell3',	'Woonkamer', '[&deg;C]'],
-		['1',	'SetPoint',		'cell5',	'Ingestelde temp', '[&deg;C]',],
+		['146',	'Temp',	    	'cell5',	'Slaapkamer', '[&deg;C]',],
 		['2',	'Humidity',		'cell4',	'Woonkamer' ,'[%]',],	
 
 		['46',	'Status',		'cell6',	'WTW stand 3', ''],
-		['28',	'Status',		'cell7',	'WTW Blokkeer', ''],
-		['34',	'Status',		'cell8',	'Lamp eettafel', ''],
-		['34',	'Level',		'cell9',	'Dimmer eettafel', ''],
-		['3',	'Status',		'cell10',	'Verwarming', ''],
+		['45',	'Status',		'cell7',	'WTW stand 2', ''],
+		['217',	'Status',		'cell8',	'Tropenrooster', ''],
+		['28',	'Status',		'cell9',	'WTW Blokkeer', ''],
+		['71',	'Status',		'cell10',	'Verwarming', ''],
 
 		['28',	'Status',		'cell11',	'WTW Blokkeer', ''],
 		['888',	'Data',			'cell12',	'cell 12' ,'[%]'],
